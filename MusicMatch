@@ -1,0 +1,272 @@
+//Biblioteca principal//
+#include <iostream>
+
+//<string>) sirve para crear, almacenar y manipular cadenas de texto (como palabras, frases o párrafos) de forma segura y sencilla) --w3schools//
+#include <string>
+
+//La línea using namespace std; es una instrucción en C++ que le dice al compilador que vas a usar el espacio de nombres estándar (std) de forma directa.//
+using namespace std;
+//En C++, int main() es la función principal y el punto de partida obligatorio de cualquier programa.//
+
+int main() {
+    // aqui defino todas las variables nombreCliente, el apellido el nombre completo para usar el nombre completo, luego color de guitarra para alegir entre por ahora dos colores y el servicio//
+    string nombreCliente;
+    string apellidoCliente;
+    string nombreCompleto;
+    string colorGuitarra;
+    string servicio;
+
+    //int para guardar variables con numeros//
+    int opcion;
+    int color;
+    int mantenimiento;
+    int genero;
+    int cantante;
+
+    //aqui uso float que guarda numeros decimales pero tambien sirve para ahi meter los numeros del precio y para ahorrar espacio en memoria//
+    float precioGuitarra = 450000;
+    float precioServicio = 0;
+    float precioMusicaP = 50000;
+    float precioMusicaU = 40000;
+    float precioMusicaA = 30000;
+
+    //estructura basica para colocar textos con el using namespace std//
+    cout << "========================================" << endl;
+    cout << "       BIENVENIDOS A MusicMatch         " << endl;
+    cout << "   Tienda Virtual de Instrumentos       " << endl;
+    cout << "========================================" << endl;
+
+    //y aqui lo que hago es que con get line hago como lo de leer el nombre del cliente para guardarlo como un texto//
+    cout << "\nIngresa tu nombre: ";
+    getline(cin, nombreCliente);
+
+    cout << "Ingresa tu apellido: ";
+    getline(cin, apellidoCliente);
+
+    //aqui se suma por decirlo asi el nombre del cliente y el apellido con el espacio que es el esapcio en blanco que coloqeu en las comillas, ahi guardando el nombre completo para usar despues//
+    nombreCompleto = nombreCliente + " " + apellidoCliente;
+
+    //ya aqui empiezo a usar el nombre completo de antes para una interfaz que ando haciendo, luego coloco un if con el Int que tenia antes para que lea la opcion segun el numero//
+    cout << "\nHola " << nombreCompleto << "!" << endl;
+    cout << "Que deseas hacer?" << endl;
+    cout << "1. Comprar una guitarra" << endl;
+    cout << "2. Hacer mantenimiento" << endl;
+    cout << "3. Comprar Musica" << endl;
+    cout << "Elige una opcion: ";
+    cin >> opcion;
+    //entonces aqui luego de escribir el numero de la opcion ahi uso la estructura de if que dice si tengo opcion o 1 o 2, donde en la opcion 1 es que coloco el catalogo de guitarras//
+    if (opcion == 1) {
+        //uso \n para ordenar el texto en parrafos//
+        cout << "\nIII CATALOGO DE GUITARRAS III" << endl;
+        cout << "Guitarra electrica MusicMatch" << endl;
+        cout << "Precio: $" << precioGuitarra << endl;
+        cout << "1. Negro" << endl;
+        cout << "2. Rojo" << endl;
+        cout << "Elige el color: ";
+        cin >> color;
+        // aqui otra ves luego leo el numero del color que ya sea uno o dos, y tambien coloque que si coloca algo incorrecto diga que no existe ese color//
+        if (color == 1) { //osea se usa el "Si"y el doble signo de == es para comparar//
+            colorGuitarra = "Negro";
+            //else if (de lo contrario si..) Indica que solo se revisará esta opción si las condiciones anteriores resultaron ser falsas.//
+        }
+        else if (color == 2) { //es una estructura de control que sirve para evaluar una segunda condición cuando la primera opción no se cumplió.//
+            colorGuitarra = "Rojo";
+        }
+        else {
+            cout << "N ofrecemos ese color" << endl;
+            return 0;//En C++, return 0; sirve para avisarle al sistema operativo que el programa terminó correctamente y sin errores//
+        }
+
+        cout << "\nHas elegido una guitarra  de color "
+            << colorGuitarra << endl;
+        cout << "Si es el color que queres?" << endl;
+        cout << "1. Si" << endl;
+        cout << "2. No" << endl;
+        cout << "Opcion: ";
+        cin >> opcion;
+        // aqui segun el numero que hayamos dicho nos dice que color elegimos//
+
+        if (opcion == 1) {
+            cout << "\nCOMPRACONFIRMADA" << endl;
+            cout << "Cliente: " << nombreCompleto << endl;
+            cout << "Producto: Guitarra electrica" << endl;
+            cout << "Color: " << colorGuitarra << endl;
+            cout << "Total: $" << precioGuitarra << endl;
+        }
+        else {
+            cout << "\nCompra cancelada." << endl;
+        }
+        //ya aqui lo que hicimos fue que si confirmamos que ese es el color que queremos entonces se dice que se hizo la compra, o si no se dice compra cancelada//
+
+    }
+    //aqui es la opcion 2 que es para hacer mantenimiento, donde primero se elige el servicio y luego se confirma la solicitud//
+    else if (opcion == 2) {
+        cout << "\n--- SERVICIO DE MANTENIMIENTO ---" << endl;
+        cout << "1. Limpieza general - $30000" << endl;
+        cout << "2. Cambio de cuerdas - $25000" << endl;
+        cout << "3. Calibracion de guitarra - $50000" << endl;
+        cout << "Elige el servicio: ";
+        cin >> mantenimiento;
+
+        if (mantenimiento == 1) {
+            servicio = "Limpiar la guitarra en general";
+            precioServicio = 20000;
+        }
+        else if (mantenimiento == 2) {
+            servicio = "Cambiar de cuerdas";
+            precioServicio = 25000;
+        }
+        else if (mantenimiento == 3) {
+            servicio = "Calibracion de guitarra";
+            precioServicio = 50000;
+        }
+        else {
+            cout << "Servicio no valido." << endl;
+            return 0;
+        }
+
+        cout << "\n^^^SOLICITUD REGISTRADA^^^" << endl;
+        cout << "Cliente: " << nombreCompleto << endl;
+        cout << "Servicio: " << servicio << endl;
+        cout << "Total estimado: $" << precioServicio << endl;
+        cout << "Gracias por confiar en MusicMatch" << endl;
+
+    }
+    //Aqui es la opcion 3 que es para comprar musica, donde primero se elige el genero y luego el cantante, y al final se confirma la compra//
+    else if (opcion == 3) {
+        cout << "\n--- QUE GENERO DE MUSICA LE GUSTAR2IA COMPRAR ---" << endl;
+        cout << "1. Popular" << endl;
+        cout << "2. Urbana" << endl;
+        cout << "3. Alternativa" << endl;
+        cout << "Elige el Genero: ";
+        cin >> genero;
+        //aqui segun el numero que hayamos dicho nos dice que genero elegimos//
+        if (genero == 1) {
+            cout << "\n--- QUE ARTISTA DE MUSICA LE GUSTARIA COMPRAR ---" << endl;
+            cout << "1. Francisco 'Pacho' Bedoya" << endl;
+            cout << "2. Manuel J. Bernal" << endl;
+            cout << "3. Antonio David" << endl;
+            cin >> cantante;
+            //aqui segun el numero que hayamos dicho nos dice que cantante elegimos//
+            if (cantante == 1) {
+                cout << "\nCOMPRACONFIRMADA" << endl;
+                cout << "Cliente: " << nombreCompleto << endl;
+                cout << "Producto: Compra de Album" << endl;
+                cout << "Genero: Popular" << endl;
+                cout << "Cantante: Francisco 'Pacho' Bedoya" << endl;
+                cout << "Total: $" << precioMusicaP << endl;
+            }
+
+            else if (cantante == 2) {
+                cout << "\nCOMPRACONFIRMADA" << endl;
+                cout << "Cliente: " << nombreCompleto << endl;
+                cout << "Producto: Compra de Album" << endl;
+                cout << "Genero: Popular" << endl;
+                cout << "Cantante: Manuel J. Bernal" << endl;
+                cout << "Total: $" << precioMusicaP << endl;
+            }
+
+            else if (cantante == 3) {
+                cout << "\nCOMPRACONFIRMADA" << endl;
+                cout << "Cliente: " << nombreCompleto << endl;
+                cout << "Producto: Compra de Album" << endl;
+                cout << "Genero: Popular" << endl;
+                cout << "Cantante: Antonio David" << endl;
+                cout << "Total: $" << precioMusicaP << endl;
+            }
+            else {
+                cout << "Cantante no ofrecido.";
+            }
+        }
+        else if (genero == 2) {
+            cout << "\n--- QUE ARTISTA DE MUSICA LE GUSTARIA COMPRAR ---" << endl;
+            cout << "1. Juan Duque" << endl;
+            cout << "2. Noiseferatu" << endl;
+            cout << "3. Bhietxa" << endl;
+            cout << "Elige El Artista:" << endl;
+            cin >> cantante;
+
+            if (cantante == 1) {
+                cout << "\nCOMPRACONFIRMADA" << endl;
+                cout << "Cliente: " << nombreCompleto << endl;
+                cout << "Producto: Compra de Album" << endl;
+                cout << "Genero: Popular" << endl;
+                cout << "Cantante: Juan Duque" << endl;
+                cout << "Total: $" << precioMusicaP << endl;
+            }
+
+            else if (cantante == 2) {
+                cout << "\nCOMPRACONFIRMADA" << endl;
+                cout << "Cliente: " << nombreCompleto << endl;
+                cout << "Producto: Compra de Album" << endl;
+                cout << "Genero: Popular" << endl;
+                cout << "Cantante: Noiseferatu" << endl;
+                cout << "Total: $" << precioMusicaP << endl;
+            }
+
+            else if (cantante == 3) {
+                cout << "\nCOMPRACONFIRMADA" << endl;
+                cout << "Cliente: " << nombreCompleto << endl;
+                cout << "Producto: Compra de Album" << endl;
+                cout << "Genero: Popular" << endl;
+                cout << "Cantante: Bhietxa" << endl;
+                cout << "Total: $" << precioMusicaP << endl;
+            }
+            else {
+                cout << "Cantante no ofrecido.";
+            }
+
+        }
+        else if (genero == 3) {
+            cout << "\n--- QUE ARTISTA DE MUSICA LE GUSTARIA COMPRAR ---" << endl;
+            cout << "1. Lignina" << endl;
+            cout << "2. Kukos Band" << endl;
+            cout << "3. Bhietxa" << endl;
+            cin >> cantante;
+
+            if (cantante == 1) {
+                cout << "\nCOMPRACONFIRMADA" << endl;
+                cout << "Cliente: " << nombreCompleto << endl;
+                cout << "Producto: Compra de Album" << endl;
+                cout << "Genero: Popular" << endl;
+                cout << "Cantante: Lignina" << endl;
+                cout << "Total: $" << precioMusicaP << endl;
+            }
+
+            else if (cantante == 2) {
+                cout << "\nCOMPRACONFIRMADA" << endl;
+                cout << "Cliente: " << nombreCompleto << endl;
+                cout << "Producto: Compra de Album" << endl;
+                cout << "Genero: Popular" << endl;
+                cout << "Cantante: Kukos Band" << endl;
+                cout << "Total: $" << precioMusicaP << endl;
+            }
+
+            else if (cantante == 3) {
+                cout << "\nCOMPRACONFIRMADA" << endl;
+                cout << "Cliente: " << nombreCompleto << endl;
+                cout << "Producto: Compra de Album" << endl;
+                cout << "Genero: Popular" << endl;
+                cout << "Cantante: Antonio David" << endl;
+                cout << "Total: $" << precioMusicaP << endl;
+            }
+        }
+        //aqui si el genero que se eligio no es ninguno de los tres que puse dira que no se ofrece ese genero//
+        else {
+            cout << "Genero no ofrecido.";
+        }
+        //o en caso de decir algo que no existe dira opcion invalida//    
+    }
+        else {
+            cout << "Opcion no valida." << endl;
+        }
+        //ya luego este es el final donde cuando se terminan todas las opciones se muestra este mensaje de despedida//
+        cout << "\n========================================" << endl;
+        cout << "   Gracias por visitar MusicMatch!" << endl;
+        cout << "========================================" << endl;
+
+        return 0;
+        //sirve para indicarle al sistema operativo que el programa terminó de ejecutarse con éxito y sin errores//
+    }
+
+
